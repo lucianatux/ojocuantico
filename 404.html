@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <title>Page Not Found</title>
     <script type="text/javascript">
-      // Este script redirige a la ruta específica
+      // Este script redirige a la ruta específica completa
       var path = window.location.pathname;
-      var redirectTo = "/" + path;
-      window.location.replace(redirectTo);
+      var redirectTo = "https://lucianatux.github.io/ojocuantico" + path;
+      if (window.location.href !== redirectTo) {
+        window.location.replace(redirectTo);
+      }
     </script>
   </head>
   <body>
     <p>Redirecting...</p>
   </body>
 </html>
+
+
