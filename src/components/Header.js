@@ -1,11 +1,24 @@
+import { Navbar, Nav, Dropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useState} from 'react';
 import navIcon5 from "../assets/img/nav-icon5.svg";
 import navIcon4 from "../assets/img/nav-icon4.svg";
 import logo from "../assets/img/ojo9.png";
 import logo2 from "../assets/img/ojo99a.png";
-import { Navbar, Nav, Dropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+
+
 
 export const Header = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleNavLinkClick = () => {
+    setExpanded(false);
+  };
+  
+
+
+
+
   return (
     <div className="header">
       <div className="div-header">
@@ -22,10 +35,11 @@ export const Header = () => {
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
             className="bg-body-tertiary mx-2"
+            onClick={() => setExpanded(!expanded)}
           />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse in={expanded} id="basic-navbar-nav">
             <Nav className="me-auto align-items-center">
-              <Nav.Link as={Link} to="/" className="tabs">
+              <Nav.Link as={Link} to="/" className="tabs" onClick={handleNavLinkClick}>
                 Inicio
               </Nav.Link>
               <Dropdown>
@@ -33,18 +47,18 @@ export const Header = () => {
                   Acerca de nosotros
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/aboutus">
+                  <Dropdown.Item as={Link} to="/aboutus" onClick={handleNavLinkClick}>
                     Nuestro propósito
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/workshops">
+                  <Dropdown.Item as={Link} to="/workshops" onClick={handleNavLinkClick}>
                     Talleres
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/contact">
+                  <Dropdown.Item as={Link} to="/contact" onClick={handleNavLinkClick}>
                     Contáctanos
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              <Nav.Link as={Link} to="/oldeditions" className="tabs">
+              <Nav.Link as={Link} to="/oldeditions" className="tabs" onClick={handleNavLinkClick}>
                 Más
               </Nav.Link>
               <span className="header-text">
